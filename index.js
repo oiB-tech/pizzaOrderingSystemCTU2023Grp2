@@ -40,6 +40,9 @@ app.use(express.json());
 // Serves up files that are linked statically (.css, .js files in our html)
 app.use(express.static('./'))
 
+// Authentication middleware
+app.use(require('./middleware/auth'))
+
 // API Router
 app.use('/api', require('./api'))
 

@@ -40,7 +40,8 @@ const DB_DEF = [
     `,
     `
         INSERT INTO Users (userId, username, password, firstName, lastName, phoneNumber, activeCart) VALUES
-        ('1', 'admin', 'password', 'Admin', 'User', '1234567890', NULL)
+        ('1', 'admin', 'password', 'Admin', 'User', '1234567890', NULL),
+        ('2', 'test', 'password', 'Test', 'Customer', '1234567890', NULL);
     `),
     new DBModel('Addresses', 
     `
@@ -78,6 +79,13 @@ const DB_DEF = [
     new DBModel('Permissions', 
     `
         permissionName varchar(255) UNIQUE PRIMARY KEY
+    `,
+    `
+        INSERT INTO Permissions (permissionName) VALUES
+        ('Admin'),
+        ('CancelOrder'),
+        ('ModifyOrder'),
+        ('EditMenu')
     `),
     new DBModel('UserPermissionRelations', 
     `
@@ -96,6 +104,17 @@ const DB_DEF = [
         ingredientName varchar(255) UNIQUE PRIMARY KEY,
         extraCost int,
         ingredientType varchar(20)
+    `,
+    `
+        INSERT INTO Ingredients (ingredientName, extraCost, ingredientType) VALUES
+        ('Pepperoni', 0, 'TOPPING'),
+        ('Sausage', 0, 'TOPPING'),
+        ('Peppers', 0, 'TOPPING'),
+        ('Pineapple', 0, 'TOPPING'),
+        ('Tomato Sauce', 0, 'SAUCE'),
+        ('BBQ Sauce', 0, 'SAUCE'),
+        ('Garlic Crust', 0, 'CRUST'),
+        ('Thin Crust', 0, 'CRUST');
     `),
     new DBModel('MenuPizzaIngredientRelations', 
     `
